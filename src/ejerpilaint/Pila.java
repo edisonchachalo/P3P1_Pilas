@@ -55,4 +55,12 @@ public class Pila {
         return resultado;
     }
 
+    public String mostrarBinario(){
+        String resultado = " ";
+        for (int i = pila.size() - 1; i >= 0; i--) {
+            resultado += pila.pop(); //no utilizamos get porque si ponemos otro número se va a mostrar el mismo número, entonces con pop se muestra el número y se elimina de la pila, entonces cada vez que se muestre el número binario se va a eliminar el número de la pila con pop
+        }
+        return resultado;
+    }
+
 }
