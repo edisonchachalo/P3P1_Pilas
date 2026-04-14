@@ -16,10 +16,19 @@ public class Ventana {
     private JTextArea textArea1;
 
     private PilaMensaje whatsApp;
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Ventana");
+        frame.setContentPane(new Ventana().Ventana);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
+
     //crear un constructor por defecto para inicializar el objeto de tipo PilaMensaje, para que se pueda utilizar en los botones
     //si no creo el constructor por defecto no puedo colocar los eventos de los botones
-    public Ventana(){
-        //whatsApp = new PilaMensaje();
+    public Ventana() {
+        whatsApp = new PilaMensaje();
 
         btnEnviarMensaje.addActionListener(new ActionListener() {
             @Override
@@ -31,5 +40,40 @@ public class Ventana {
 
             }
         });
+        btnEliminar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Mensaje eliminado = whatsApp.pop();
+                    textArea1.setText("Mensaje eliminado \n" + eliminado + "\n" + whatsApp.toString());
+                } catch (Exception ex) {
+                    textArea1.setText("No hay mensajesa para eliminar");
+                }
+            }
+        });
+        btnUltimo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Mensaje ultimo = whatsApp.peek();
+                    textArea1.setText("Último mensaje enviado\n"+ultimo+"\n"+whatsApp.toString());
+                } catch (Exception ex) {
+                    textArea1.setText("No hay mensajes en la pila");
+                }
+            }
+        });
+        btnLike.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Mensaje ultimo = whatsApp.peek();
+                    ultimo.addLikes();
+                    textArea1.setText("Se dio like al último mensaje enviado \n"+whatsApp.toString());
+                } catch (Exception ex) {
+                    textArea1.setText("No hay mensajes para dar like");
+                }
+            }
+        });
+
     }
 }

@@ -43,18 +43,11 @@ public class PilaMensaje {
 
     @Override
     public String toString() {
-        String resultado = "Pila: \n";
-        for (int i = pila.size() - 1; i >= 0; i--) {
-            resultado += pila.get(i) + "\n";
+        String mensajeEnviado = " ";
+        for (int i = 0; i < pila.size(); i++) {
+            mensajeEnviado += pila.get(i)+"\n";
         }
-        return resultado;
+        return mensajeEnviado;
     }
 
-    public String mostrarBinario(){
-        String resultado = " ";
-        for (int i = pila.size() - 1; i >= 0; i--) {
-            resultado += pila.pop(); //no utilizamos get porque si ponemos otro número se va a mostrar el mismo número, entonces con pop se muestra el número y se elimina de la pila, entonces cada vez que se muestre el número binario se va a eliminar el número de la pila con pop
-        }
-        return resultado;
-    }
 }
