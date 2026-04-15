@@ -1,6 +1,7 @@
 package Cola.colasimple;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Pedido {
     private String codigo;
@@ -42,7 +43,7 @@ public class Pedido {
     @Override
     public String toString() {
         return "== Pedido ==\n" +
-                "Fecha: "+fecha+
+                "Fecha: "+fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))+
                 "\nCodigo: " + codigo +
                 "\nDescripcion:'" + descripcion +
                 "\nCantidad: " + cantidad;
