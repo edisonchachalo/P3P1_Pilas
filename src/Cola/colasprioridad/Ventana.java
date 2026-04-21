@@ -39,6 +39,41 @@ public class Ventana {
                 mostrar(); //método
             }
         });
+        atenderButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Paciente atendido = emergencia.desencolar();
+                    JOptionPane.showMessageDialog(null,
+                            "Paciente atendido:\n" + atendido.toString(),
+                            "Atención",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    mostrar(); // actualizar la lista
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null,
+                            ex.getMessage(),
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        proximoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Paciente siguiente = emergencia.primero();
+                    JOptionPane.showMessageDialog(null,
+                            "Próximo paciente:\n" + siguiente.toString(),
+                            "Próximo en la cola",
+                            JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null,
+                            ex.getMessage(),
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
     }
 
     public void setear(){
